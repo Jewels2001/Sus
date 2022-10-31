@@ -1,4 +1,16 @@
-
+/* Custom color theme */
+:root .dark {
+    --f7-grid-gap: 3px;
+    --f7-theme-color: #af81F0;
+    --f7-theme-color-rgb: 175, 129, 240;
+    --f7-theme-color-shade: #985dec;
+    --f7-theme-color-tint: #c6a5f4;
+    --f7-card-header-text-color: #A0F069;
+    --f7-list-item-divider-height: 5px;
+    /* --f7-list-item-divider-font-size: inherit;
+    --f7-list-item-divider-bg-color: rgba(0, 0, 0, 0.03);
+    --f7-list-item-divider-border-color: rgba(0, 0, 0, 0.22); */
+}
 
 body {
         background-color: #ffffff;

@@ -7,12 +7,16 @@ var app = new Framework7({
             url: 'index.html',
         },
         {
-            path: 'about',
-            url: 'about.html'
+            path: '/about/',
+            url: 'pages/about.html',
         },
         {
-            path: 'game1',
-            url: 'game1.html',
+            path: '/game1/',
+            url: 'pages/game1.html',
+        },
+        {
+            path: '(.*)',
+            url: 'pages/404.html',
         },
     ],
 });
@@ -26,6 +30,23 @@ var candy = ["M&Ms", "Jolly Ranchers", "Snickers", "Smarties", "Candy Corn", "Ca
 
 
 var currentGameAns = {person:"No one", location:"No where", candy:"Nothing"};
+
+
+for(let i=0; i<6; i++) {
+    let p = ".person" + i;
+    let c = ".candy" + i;
+    console.log(c);
+    $(p).text(people[i]);
+    $(c).text(candy[i]);
+}
+
+// for(let i=0; i<10; i++) {
+//     let l = ".loc" + i;
+// }
+
+// $(".person1").text(people[0]);
+// $(".loc").text(currentGameAns.location);
+// $(".candy").text(currentGameAns.candy);
 
 
 
@@ -43,6 +64,10 @@ $('#quick-game').on("click", function () {
     currentGameAns.candy = candy[ans3];
     console.log(currentGameAns);
 
+    // $(".person").text(currentGameAns.person);
+    // $(".loc").text(currentGameAns.location);
+    // $(".candy").text(currentGameAns.candy);
+
     // waterLevel += 10;
     // $('#water').fadeIn().delay(3000).fadeOut()
     // var watering = setTimeout(, 100);
@@ -50,7 +75,20 @@ $('#quick-game').on("click", function () {
 
 
 $('#vote').on("click", function () {
-    console.log("voted!")
+    console.log("voted!");
+    var guessPerson = $(this).val();
+    var guessLoc = $(this).val();
+    var guessCandy = $(this).val();
+    var won = 0;
+
+    if(guessPerson == currentGameAns.person && guessLoc == currentGameAns.location && guessCandy == currentGameAns.candy) {
+        won = 1;
+        console.log("Won!");
+    } else {
+        console.log("Wrong guess :(");
+        console.log("Maybe you were the killer :scream: !");
+    }
+
     // waterLevel += 10;
     // $('#water').fadeIn().delay(3000).fadeOut()
     // var watering = setTimeout(, 100);
