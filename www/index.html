@@ -33,14 +33,44 @@
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
         <meta name="color-scheme" content="light dark">
+        <link rel="stylesheet" href="css/framework7-bundle.min.css">
         <link rel="stylesheet" href="css/index.css">
         <title>*Suspicion*</title>
     </head>
     <body>
-        <div class="app">
+        <div id="app">
+            <div class="view view-main">
+                <!-- first page -->
+                <div class="page home" data-name="home">
+                    <h1>Hellow!</h1>Hello!
+                    <div class="toolbar toolbar-bottom">
+                        <div class="toolbar-inner">
+                            <!-- Toolbar links -->
+                            <a href="#" class="link">Link 1</a>
+                            <a href="#" class="link">Link 2</a>
+                        </div>
+                    </div>
+                    <!-- Scrollable page content -->
+                    <div class="page-content">
+                        <div class="row">
+                            <div class="col-100 medium-50">
+                                <p> Placeholder</p>
+                            </div>
 
+                            <div class="col-100 medium-50 elevation-12 elevation-pressed-6">
+                                <button class="button color-blue button-raised button-fill ">Quick Game</button>
+                            </div>
+                        </div>
+                        <p>Page content goes here</p>
+
+                        <!-- Link to another page -->
+                        <a href="/about/">About app</a>
+                    </div>
+                </div>
+            </div>
         </div>
         <script src="cordova.js"></script>
+        <script src="js/framework7-bundle.min.js"></script>
         <script src="js/index.js"></script>
     </body>
 </html>
