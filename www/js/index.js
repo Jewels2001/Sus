@@ -58,16 +58,22 @@ function checkLabels() {
     for(let i=0; i<6; i++) {
         let p = "#person" + i;
         let c = "#candy" + i;
-        //console.log(c);
+        let p1 = ".person" + i;
+        let c1 = ".candy" + i;
+        console.log(c);
         $(p).text(people[i]);
         $(c).text(candy[i]);
+        $(p1).text(people[i]);
+        $(c1).text(candy[i]);
 
         //console.log($(p).text(people[i]));
     }
     for (let i = 0; i < 10; i++) {
         let l = "#loc" + i;
+        let l1 = ".loc" + i;
         //console.log(l);
         $(l).text(rooms[i]);
+        $(l1).text(rooms[i]);
         //console.log($(p).text(people[i]));
     }
     setTimeout(checkLabels, 1000);
@@ -83,9 +89,7 @@ checkLabels();
 
 
 
-$('#submitCandy').on("click", function () {
-    console.log("Here");
-});
+
 
 $('#quick-game').on("click", function () {
     console.log("game started!");
@@ -104,14 +108,26 @@ $('#quick-game').on("click", function () {
     // $(".person").text(currentGameAns.person);
     // $(".loc").text(currentGameAns.location);
     // $(".candy").text(currentGameAns.candy);
+});
 
-    // waterLevel += 10;
-    // $('#water').fadeIn().delay(3000).fadeOut()
-    // var watering = setTimeout(, 100);
+$('#vote').on("click", function () {
+    console.log("Here");
+});
+
+$("#name-input").on("change", function () {
+    console.log("name inputted");
+    var userName = $(this).val();
+    $(".name-display").text(userName);
+});
+
+$("#candy-input").on("change", function () {
+    console.log("candy inputted");
+    var favCandy = $(this).val();
+    $(".candy-display").text(favCandy);
 });
 
 
-$('#vote').on("click", function () {
+$('.vote').on("click", function () {
     console.log("voted!");
     var guessPerson = $(this).val();
     var guessLoc = $(this).val();
@@ -125,23 +141,8 @@ $('#vote').on("click", function () {
         console.log("Wrong guess :(");
         console.log("Maybe you were the killer :scream: !");
     }
-
-    // waterLevel += 10;
-    // $('#water').fadeIn().delay(3000).fadeOut()
-    // var watering = setTimeout(, 100);
 });
 
-// $("#name-input").on("change", function () {
-//     console.log("name inputted");
-//     var userName = $(this).val();
-//     $(".name-display").text(userName);
-// });
-
-$("#candy-input").on("change", function () {
-    console.log("candy inputted");
-    var favCandy = $(this).val();
-    $(".candy-display").text(favCandy);
-});
 
 $('#submit-candy').on("click", function () {
     console.log("HI");
@@ -168,3 +169,17 @@ var dialogLogIn = app.dialog.create({
 // app.dialog.confirm("You did not enter a name/candy! Proceed?", function (dialogLogIn) {
 //     app.dialog.alert("Sounds good, " + userName);
 //  });
+
+
+app.picker.create({
+    inputEl: '#people-picker',
+    cols: [
+        {
+            textAlign: 'center',
+            values: people,
+        }
+    ]
+});
+
+
+

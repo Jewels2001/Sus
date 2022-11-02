@@ -1,29 +1,82 @@
 <div class="page" data-name="game1">
+        <div class="navbar">
+            <div class="navbar-inner">
+                <a class="link back" href="#">
+                    <i class="icon icon-back"></i>
+                </a>
+            </div>
+        </div>
+        <div class="toolbar toolbar-bottom">
+            <div class="toolbar-inner">
+                <!-- Toolbar links -->
+                <a href="/about/" class="link">About</a>
+                <a href="/" class="link">Home</a>
+                <a href="/game1_evidence/" class="link">Evidence</a>
+                <a href="/game1_guess/" class="link">Guess</a>
+            </div>
+        </div>
     <div class="page-content">
-        <a class="link back" href="#">
-            <i class="icon icon-back"></i>
-        </a>
         <div class="block">
             <h1> Guess the Suspect! </h1>
-            <a class="item link smart-select smart-select-init" data-open-in="sheet">
-                <select name="Person">
-                    <optgroup label="Person">
-                        <option id="person1"> John </option>
-                        <option id="person2"> Amy </option>
-                        <option id="person3"> May </option>
-                        <option id="person4"> Emily </option>
-                        <option id="person5"> Ryan </option>
-                        <option id="person6"> Jack </option>
-                    </optgroup>
-                </select>
-                               
-            </a>
+            <div class="list">
+                <ul>
+                    <li>
+                        <a class="item link smart-select smart-select-init" data-open-in="sheet"></a>
+                        <select name="Person">
+                            <optgroup label="Person">
+                                <option class="person1"> J </option>
+                                <option class="person2" value="person2"> J </option>
+                                <option class="person3"> May </option>
+                                <option class="person4"> Emily </option>
+                                <option class="person5"> Ryan </option>
+                                <option class="person0"> Jack </option>
+                            </optgroup>
+                        </select>
+                    </li>
+                    <li>
+                        <a class="item link smart-select smart-select-init" data-open-in="sheet"></a>
+                        <select name="Location">
+                            <optgroup label="Location">
+                                <option class="loc0"> John </option>
+                                <option class="loc2"> Amy </option>
+                                <option class="loc3"> May </option>
+                                <option class="loc4"> Emily </option>
+                                <option class="loc5"> Ryan </option>
+                                <option class="loc6"> Jack </option>
+    
+                                <option class="loc1"> Amy </option>
+                                <option class="loc7"> May </option>
+                                <option class="loc8"> Emily </option>
+                                <option class="loc9"> Ryan </option>
+                            </optgroup>
+                        </select>
+                    </li>
+                    <li>
+                        <a class="item link smart-select smart-select-init" data-open-in="sheet"></a>
+                        <select name="Candy">
+                            <optgroup label="Candy">
+                                <option class="candy0"> J </option>
+                                <option class="candy1" value="person2"> J </option>
+                                <option class="candy2"> May </option>
+                                <option class="candy3"> Emily </option>
+                                <option class="candy4"> Ryan </option>
+                                <option class="candy5"> Jack </option>
+                            </optgroup>
+                        </select>
+                    </li>
+                </ul>
+            </div>
+            <div class="row">
+                <div class="col-100 medium-50 elevation-12 elevation-pressed-6">
+                    <a href="#" class="button button-raised button-fill" id="vote">Guess!</a>
+                </div>
+                <div class="col-100 medium-50 elevation-12 elevation-pressed-6">
+                    <a href="#" class="button button-raised button-fill" id="quick-game">Quick Game</a>
+                </div>
+            </div>
         </div>
-
-
     </div>
 </div>
-
 
 <!-- 
 var people = ["John", "Amy", "May", "Emily", "Ryan", "Jack"];
