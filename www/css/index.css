@@ -28,3 +28,7 @@ body {
     width: 120px;
     height: 120px;
 }
+
+.container p {
+    display: inline;
+}

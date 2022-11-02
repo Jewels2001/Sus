@@ -52,6 +52,7 @@ var userName = "J";
 var favCandy = "Smarties";
 
 var currentGameAns = {person:"No one", location:"No where", candy:"Nothing"};
+var curentGuess = { person: "NA", location: "NW", candy: "NO" }
 
 
 function checkLabels() {
@@ -76,9 +77,31 @@ function checkLabels() {
         $(l1).text(rooms[i]);
         //console.log($(p).text(people[i]));
     }
+
+
+    $("#candy-input").on("change", function () {
+        console.log("candy inputted");
+        favCandy = $(this).val();
+        $(".candy-display").text(favCandy);
+    });
+
+    $(".candy-display").text(favCandy);
     setTimeout(checkLabels, 1000);
 }
+
+function vote() {
+    $('#vote').on("click", function () {
+        $("location-guess").select(function () {
+            console.log("selected!");
+            currentGuess.person = $("#location-guess").value;
+            console.log(currentGuess)
+        })
+        console.log("Here");
+    });
+    setTimeout(vote, 100);
+}
 checkLabels();
+vote();
 // for(let i=0; i<10; i++) {
 //     let l = ".loc" + i;
 // }
@@ -87,7 +110,10 @@ checkLabels();
 // $(".loc").text(currentGameAns.location);
 // $(".candy").text(currentGameAns.candy);
 
+$("location-guess").select(function() {
+    console.log("selected!");
 
+})
 
 
 
@@ -120,11 +146,7 @@ $("#name-input").on("change", function () {
     $(".name-display").text(userName);
 });
 
-$("#candy-input").on("change", function () {
-    console.log("candy inputted");
-    var favCandy = $(this).val();
-    $(".candy-display").text(favCandy);
-});
+
 
 
 $('.vote').on("click", function () {
