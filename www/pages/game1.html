@@ -1,11 +1,53 @@
 <div class="page" data-name="game1">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <a class="link back" href="#">
+                <i class="icon icon-back"></i>
+            </a>
+        </div>
+    </div>
+    <div class="toolbar toolbar-bottom">
+        <div class="toolbar-inner">
+            <!-- Toolbar links -->
+            <a href="/about/" class="link">About</a>
+            <a href="/" class="link">Home</a>
+            <a href="#" class="link">Link 3</a>
+        </div>
+    </div>
+
     <div class="page-content">
-        <a class="link back" href="#">
-            <i class="icon icon-back"></i>
-        </a>
-        This is a quick game!
         <div class="block">
-            
+            <div class="row">
+                <div class="col-100 medium-50">
+                    <h1>Starting a quick game of Clusus...</h1>
+                </div>
+                <div class="list no-hairlines-md">
+                    <ul>
+                        <li class="item-content item-input">
+                            <div class="item-inner">
+                                <div class="item-input-wrap">
+                                    <input id="name-input" type="text" name="name" placeholder="Your name here :)" />
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content item-input">
+                            <div class="item-inner">
+                                <div class="item-input-wrap">
+                                    <input id="candy-input" type="text" name="candy" placeholder="Fav candy here" />
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="col-100 medium-50 elevation-12 elevation-pressed-6">
+                                <a href="/game1_story/" class="button button-fill button-raised button-fill" id="submit-candy">Submit!</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-100 medium-50">
+                    <input type="text" name="candy" placeholder="Your fav candy" />
+                </div>
+
         </div>
 
 

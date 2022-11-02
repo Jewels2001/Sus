@@ -11,8 +11,28 @@ var app = new Framework7({
             url: 'pages/about.html',
         },
         {
+            path: '/contact/',
+            url: 'pages/contact.html',
+        },
+        {
+            path: '/resources/',
+            url: 'pages/resources.html',
+        },
+        {
             path: '/game1/',
             url: 'pages/game1.html',
+        },
+        {
+            path: '/game1_story/',
+            url: 'pages/game1_story.html',
+        },
+        {
+            path: '/game1_evidence/',
+            url: 'pages/game1_evidence.html',
+        },
+        {
+            path: '/game1_guess/',
+            url: 'pages/game1_guess.html',
         },
         {
             path: '(.*)',
@@ -28,18 +48,31 @@ var people = ["John", "Amy", "May", "Emily", "Ryan", "Jack"];
 var rooms = ["Entrance Hall", "Dining Room", "Master Bedroom", "Kids Room", "Statutory Corridor", "Statuary Corridor", "Kitchen", "Computer Room", "Bathroom", "Backyard"];
 var candy = ["M&Ms", "Jolly Ranchers", "Snickers", "Smarties", "Candy Corn", "Caramilk Bars"];
 
+var userName = "J";
+var favCandy = "Smarties";
 
 var currentGameAns = {person:"No one", location:"No where", candy:"Nothing"};
 
 
-for(let i=0; i<6; i++) {
-    let p = ".person" + i;
-    let c = ".candy" + i;
-    console.log(c);
-    $(p).text(people[i]);
-    $(c).text(candy[i]);
-}
+function checkLabels() {
+    for(let i=0; i<6; i++) {
+        let p = "#person" + i;
+        let c = "#candy" + i;
+        //console.log(c);
+        $(p).text(people[i]);
+        $(c).text(candy[i]);
 
+        //console.log($(p).text(people[i]));
+    }
+    for (let i = 0; i < 10; i++) {
+        let l = "#loc" + i;
+        //console.log(l);
+        $(l).text(rooms[i]);
+        //console.log($(p).text(people[i]));
+    }
+    setTimeout(checkLabels, 1000);
+}
+checkLabels();
 // for(let i=0; i<10; i++) {
 //     let l = ".loc" + i;
 // }
@@ -49,6 +82,10 @@ for(let i=0; i<6; i++) {
 // $(".candy").text(currentGameAns.candy);
 
 
+
+$('#submitCandy').on("click", function () {
+    console.log("Here");
+});
 
 $('#quick-game').on("click", function () {
     console.log("game started!");
@@ -93,3 +130,41 @@ $('#vote').on("click", function () {
     // $('#water').fadeIn().delay(3000).fadeOut()
     // var watering = setTimeout(, 100);
 });
+
+// $("#name-input").on("change", function () {
+//     console.log("name inputted");
+//     var userName = $(this).val();
+//     $(".name-display").text(userName);
+// });
+
+$("#candy-input").on("change", function () {
+    console.log("candy inputted");
+    var favCandy = $(this).val();
+    $(".candy-display").text(favCandy);
+});
+
+$('#submit-candy').on("click", function () {
+    console.log("HI");
+    console.log(userName);
+    console.log(favCandy);
+
+    if(userName == "J" || favCandy == "smarties") {
+        app.dialog.confirm("You did not enter a name/candy! Proceed?", function (dialogLogIn) {
+            app.dialog.alert("Sounds good, " + userName);
+        });
+    }
+});
+
+var dialogLogIn = app.dialog.create({
+    text: "You did not enter a name/candy! Proceed?",
+    title: "Warning!",
+    on: {
+        opened: function () {
+            console.log('Dialog opened')
+        }
+    }
+ });
+
+// app.dialog.confirm("You did not enter a name/candy! Proceed?", function (dialogLogIn) {
+//     app.dialog.alert("Sounds good, " + userName);
+//  });
