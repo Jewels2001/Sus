@@ -25,6 +25,14 @@ var app = new Framework7({
         {
             path: '/game1_story/',
             url: 'pages/game1_story.html',
+            on: {
+                pageInit: function (e, page) {
+                    // do something when page initialized
+                    console.log("page loaded :)");
+                    $(".friend-display").text(friend1);
+                    $(".candy-display").text(favCandy);
+                },
+            }
         },
         {
             path: '/game1_evidence/',
@@ -43,16 +51,24 @@ var app = new Framework7({
 
 var mainView = app.views.create('.view-main');
 
+$("#vote").on("click", function () {
+    console.log("voted here");
+});
 
+ 
 var people = ["John", "Amy", "May", "Emily", "Ryan", "Jack"];
 var rooms = ["Entrance Hall", "Dining Room", "Master Bedroom", "Kids Room", "Statutory Corridor", "Statuary Corridor", "Kitchen", "Computer Room", "Bathroom", "Backyard"];
 var candy = ["M&Ms", "Jolly Ranchers", "Snickers", "Smarties", "Candy Corn", "Caramilk Bars"];
 
 var userName = "J";
 var favCandy = "Smarties";
+var friend1 = "Yooo";
 
 var currentGameAns = {person:"No one", location:"No where", candy:"Nothing"};
 var curentGuess = { person: "NA", location: "NW", candy: "NO" }
+var evidenceFound = false;
+
+
 
 
 function checkLabels() {
@@ -89,18 +105,20 @@ function checkLabels() {
     setTimeout(checkLabels, 1000);
 }
 
+
+
 function vote() {
     $('#vote').on("click", function () {
-        $("location-guess").select(function () {
+        $("#location-guess").select(function () {
             console.log("selected!");
             currentGuess.person = $("#location-guess").value;
             console.log(currentGuess)
         })
-        console.log("Here");
+        console.log("Here1");
     });
     setTimeout(vote, 100);
 }
-checkLabels();
+//checkLabels();
 vote();
 // for(let i=0; i<10; i++) {
 //     let l = ".loc" + i;
@@ -137,7 +155,7 @@ $('#quick-game').on("click", function () {
 });
 
 $('#vote').on("click", function () {
-    console.log("Here");
+    console.log("Here2");
 });
 
 $("#name-input").on("change", function () {

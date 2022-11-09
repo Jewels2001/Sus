@@ -17,9 +17,12 @@
         </div>
     <div class="page-content">
         <div class="block">
-            <h1> Guess the Suspect! </h1>
+            <h1> Guess Whodunnit? </h1>
             <div class="list">
                 <ul>
+                    <li>
+                        <h2>Person</h2>
+                    </li>
                     <li>
                         <a class="item link smart-select smart-select-init" data-open-in="sheet"></a>
                         <select id="person-guess" name="Person">
@@ -32,6 +35,9 @@
                                 <option class="person0"> Jack </option>
                             </optgroup>
                         </select>
+                    </li>
+                    <li>
+                        <h1>Location</h1>
                     </li>
                     <li>
                         <a class="item link smart-select smart-select-init" data-open-in="sheet"></a>
@@ -52,6 +58,9 @@
                         </select>
                     </li>
                     <li>
+                        <h1>Poisoned Candy</h1>
+                    </li>
+                    <li>
                         <a class="item link smart-select smart-select-init" data-open-in="sheet"></a>
                         <select id="candy-guess" name="Candy">
                             <optgroup label="Candy">
@@ -69,9 +78,6 @@
             <div class="row">
                 <div class="col-100 medium-50 elevation-12 elevation-pressed-6">
                     <a href="#" class="button button-raised button-fill" id="vote">Guess!</a>
-                </div>
-                <div class="col-100 medium-50 elevation-12 elevation-pressed-6">
-                    <a href="#" class="button button-raised button-fill" id="quick-game">Quick Game</a>
                 </div>
             </div>
         </div>
