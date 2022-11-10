@@ -8,4 +8,7 @@
     <content src="index.html" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
+    <platform name="android">
+        <icon density="xxxhdpi" src="www/res/icon/logo3.png" />
+    </platform>
 </widget>
