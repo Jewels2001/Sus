@@ -9,21 +9,21 @@
         <div class="toolbar toolbar-bottom">
             <div class="toolbar-inner">
                 <!-- Toolbar links -->
-                <a href="/about/" class="link">About</a>
                 <a href="/" class="link">Home</a>
+                <a href="/game1_map/" class="link">Map</a>
                 <a href="/game1_evidence/" class="link">Evidence</a>
-                <a href="/game1_guess/" class="link">Guess</a>
+                <a href="/game1_guess/" class="link">Guess<span class="badge color-green numGuesses">5</span></a>
             </div>
         </div>
     <div class="page-content">
         <div class="block">
             <h1> Guess Whodunnit? </h1>
-            <div class="container">You have </div><div id="numGuesses" class="container">1 million</div><div class="container"> guesses left!</div> 
+            <div class="container">You have </div><div class="numGuesses container">1 million</div><div class="container"> guess(es) left!</div> 
             <div class="list">
                 <ul >
-                    <!-- <li>
+                    <li>
                         <h2>Person</h2>
-                    </li> -->
+                    </li>
                     <li>
                         <a class="item link smart-select smart-select-init" data-open-in="popover">
                         <select id="person-guess">
@@ -38,13 +38,13 @@
                         </select>
                         <div class="item-content">
                             <div class="item-inner">
-                                <div class="item-title">Person</div>
+                                <div class="item-title">Suspect's Name: </div>
                             </div>
                         </div>
                     </a>
                     </li>
                     <li>
-                        <h1>Location</h1>
+                        <h2>Location</h2>
                     </li>
                     <li>
                         <a class="item link smart-select smart-select-init" data-open-in="popover">
@@ -65,13 +65,13 @@
                         </select>
                         <div class="item-content">
                             <div class="item-inner">
-                                <div class="item-title">Location</div>
+                                <div class="item-title">Room: </div>
                             </div>
                         </div>
                     </a>
                     </li>
                     <li>
-                        <h1>Poisoned Candy</h1>
+                        <h2>Poisoned Candy</h2>
                     </li>
                     <li>
                         <a class="item link smart-select smart-select-init" data-open-in="popover">
@@ -87,7 +87,7 @@
                         </select>
                         <div class="item-content">
                             <div class="item-inner">
-                                <div class="item-title">Candy</div>
+                                <div class="item-title">Candy: </div>
                             </div>
                         </div>
                     </a>

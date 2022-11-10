@@ -21,11 +21,43 @@ var app = new Framework7({
         {
             path: '/game1/',
             url: 'pages/game1.html',
-            // beforeEnter: function({ resolve, reject }) {
-                
-            // },
+            beforeEnter: function({ resolve, reject }) {
+                if(gameStarted) {
+                    console.log("Game exists");
+                    app.dialog.confirm('A game has already been started - If you hit OK, you will overwrite an old game. Proceed?',
+                        function() {
+                            // proceed
+                            resolve();
+                        },
+                        function() {
+                            
+                            //stay on page
+                            //reject();
+                            app.dialog.confirm("Okay, last chance. If you hit OK, you will overwrite an old game. Proceed?",
+                                function () {
+                                    app.dialog.alert("Sounds good. Goodbye, " + userName);
+                                    resetGame();
+                                    resolve();
+                                    //window.location.replace('/SusPlaceHolderA1/www/game1_evidence');
+                                },
+                                function () {
+                                    //stay
+                                    app.dialog.alert("Continuing progress, " + userName);
+                                    //return false;
+                                    //this.navigate('/game1_evidence/');
+                                    //to('/game1_evidence/');
+                                }
+                            );
+
+                        })
+                } else {
+                    resolve();
+                }
+            },
             on: {
                 pageInit: function (e, page) {
+                    resetGame();
+                    quickGame();
                     inputs();
                 },
                 pageBeforeRemove: function (e, page) {
@@ -98,6 +130,8 @@ var currentGuess = { person: "NA", location: "NW", candy: "NO" };
 var gameStarted = false;
 var evidenceFound = false;
 var guessesLeft = 5;
+var evidenceLeft = 7;
+var infoFound = "";
 
 
 function checkLabels() {
@@ -124,11 +158,17 @@ function checkLabels() {
     }
 
     $(".candy-display").text(favCandy);
-    $('#numGuesses').text(guessesLeft);
+    $('.numGuesses').text(guessesLeft);
+
+    if(evidenceFound) {
+        $('#evidence-text').text("When searching for the culprit, you deduce these things: ");
+        $('info-text').text(infoFound);
+        console.log("found");
+    }
 }
 
 function updateGuesses() {
-    $('#numGuesses').text(guessesLeft);
+    $('.numGuesses').text(guessesLeft);
 }
 
 function vote() {
@@ -147,6 +187,7 @@ function vote() {
     // check location guess
     if(currentGuess.location == currentGameAns.location && currentGuess.candy == currentGameAns.candy && currentGuess.person == currentGameAns.person) {
         console.log("WOW");
+        resetGame();
     }
     console.log("Here1");
 }
@@ -174,50 +215,60 @@ function inputs() {
     });
 }
 
-
-
-// function vote() {
-
-//     setTimeout(vote, 100);
-// }
-// //checkLabels();
-// vote();
-for(let i=0; i<10; i++) {
-    let l = ".loc" + i;
+function resetGame() {
+    userName = "J";
+    favCandy = "Smarties";
+    friend1 = "Johnny";
+    friend2 = "Abby";
+    
+    currentGameAns = { person: "No one", location: "No where", candy: "Nothing" };
+    currentGuess = { person: "NA", location: "NW", candy: "NO" };
+    gameStarted = false;
+    evidenceFound = false;
+    guessesLeft = 5;
+    evidenceLeft = 7;
+    infoFound = "";
 }
+
 
 $(".person1").text(people[0]);
 $(".loc").text(currentGameAns.location);
 $(".candy").text(currentGameAns.candy);
 
-$("location-guess").select(function() {
-    console.log("selected!");
-
-})
 
 
-function test2() {
-}
 
+/*
+  I tried this way, and it only worked on the first page load. I think this is because the js only runs once.
+*/
 
-function checkGameExists() {
-    if(gameStarted) {
-        console.log("Game exists");
-        var dialogOverwrite = app.dialgo.create({ });
-        app.dialog.confirm("You will overwrite an old game. Proceed?", function (dialogOverwrite) {
-            app.dialog.alert("Sounds good, " + userName);
-        });
-    }
-}
+// $('#quick-game').on("click", function () {
+//     checkOverwrite();
+//     console.log("game started!");
+//     var ans1 = Math.floor(Math.random() * 6);
+//     var ans2 = Math.floor(Math.random() * 10);
+//     var ans3 = Math.floor(Math.random() * 6);
+//     if(currentGameAns.length != 0) {
+//         currentGameAns.length = 0;
+//     }
+//     console.log(currentGameAns);
+//     currentGameAns.person = people[ans1];
+//     currentGameAns.location = rooms[ans2];
+//     currentGameAns.candy = candy[ans3];
+//     console.log(currentGameAns);
+//     gameStarted = true;
 
+//     // $(".person").text(currentGameAns.person);
+//     // $(".loc").text(currentGameAns.location);
+//     // $(".candy").text(currentGameAns.candy);
+// });
 
-$('#quick-game').on("click", function () {
-    checkGameExists();
+function quickGame() {
     console.log("game started!");
     var ans1 = Math.floor(Math.random() * 6);
     var ans2 = Math.floor(Math.random() * 10);
     var ans3 = Math.floor(Math.random() * 6);
-    if(currentGameAns.length != 0) {
+    if (currentGameAns.length != 0) {
         currentGameAns.length = 0;
     }
     console.log(currentGameAns);
@@ -226,11 +277,7 @@ $('#quick-game').on("click", function () {
     currentGameAns.candy = candy[ans3];
     console.log(currentGameAns);
     gameStarted = true;
-
-    // $(".person").text(currentGameAns.person);
-    // $(".loc").text(currentGameAns.location);
-    // $(".candy").text(currentGameAns.candy);
-});
+}
 
 
 

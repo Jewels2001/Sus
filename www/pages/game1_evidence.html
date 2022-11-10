@@ -4,15 +4,8 @@
                 <!-- Toolbar links -->
                 <a href="/" class="link">Home</a>
                 <a href="/game1_map/" class="link">Map</a>
-                <a href="/game1_evidence/" class="link">Evidence</a>
-                <a href="/game1_guess/" class="link">Guess</a>
-            </div>
-        </div>
-        <div class="navbar">
-            <div class="navbar-inner">
-                <a class="link back" href="#">
-                    <i class="icon icon-back"></i>
-                </a>
+                <a href="/game1_evidence/" class="link link-active">Evidence </a>
+                <a href="/game1_guess/" class="link">Guess<span class="badge color-green numGuesses">5</span></a>
             </div>
         </div>
         <div class="page-content">
@@ -23,8 +16,8 @@
                     </div>
                     <div class="col-100 medium-50">
                         <div class="card">
-                            <div class="card-content card-content-padding evidence-text">
-                                <p> When searching for the culprit, you deduce these things: </p>
+                            <div class="card-content card-content-padding" id="evidence-text">
+                                <p> On first glance, you take note of the potential suspects, rooms in the building, and candy available at the party. </p>
                             </div>
                         </div>
                         <div class="block-strong no-padding-horizontal">
