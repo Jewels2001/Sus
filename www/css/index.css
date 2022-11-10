@@ -56,3 +56,23 @@ a {
     font-size: 18px;
 }
 
+a:visited {
+    color: #A0F069;
+}
+
+.room {
+    width: auto;
+    height: auto;
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.room-text {
+    position: absolute;
+    display: inline;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 36px;
+}

@@ -1,0 +1,21 @@
+<div class="page" data-name="contact">
+    <div class="toolbar toolbar-bottom">
+        <div class="toolbar-inner">
+            <!-- Toolbar links -->
+            <a href="/" class="link">Home</a>
+            <a href="/game1_map/" class="link">Map</a>
+            <a href="/game1_evidence/" class="link">Evidence</a>
+            <a href="/game1_guess/" class="link">Guess<span class="badge color-green numGuesses">5</span></a>
+        </div>
+    </div>
+    <div class="page-content">
+        <div class="room">
+            <img src="img/pexels-creative-vix-7283.jpg">
+
+        </div>
+        <div class="room-text container">
+                        <div class="randomPerson1">Amy </div> is allergic to
+                        <div class="randomCandy1">Skittles</div> -- she could not have possibly poisoned them!
+        </div>
+    </div>
+</div>

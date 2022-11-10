@@ -22,9 +22,11 @@ var app = new Framework7({
             path: '/game1/',
             url: 'pages/game1.html',
             beforeEnter: function({ resolve, reject }) {
+                const router = this;
                 if(gameStarted) {
                     console.log("Game exists");
                     app.dialog.confirm('A game has already been started - If you hit OK, you will overwrite an old game. Proceed?',
+                        'Overwrite?',
                         function() {
                             // proceed
                             resolve();
@@ -34,18 +36,18 @@ var app = new Framework7({
                             //stay on page
                             //reject();
                             app.dialog.confirm("Okay, last chance. If you hit OK, you will overwrite an old game. Proceed?",
+                                "Double check overwrite?",
                                 function () {
-                                    app.dialog.alert("Sounds good. Goodbye, " + userName);
+                                    app.dialog.alert("Sounds good. Goodbye, " + userName, "Overwritten.");
                                     resetGame();
                                     resolve();
-                                    //window.location.replace('/SusPlaceHolderA1/www/game1_evidence');
                                 },
                                 function () {
                                     //stay
-                                    app.dialog.alert("Continuing progress, " + userName);
-                                    //return false;
-                                    //this.navigate('/game1_evidence/');
-                                    //to('/game1_evidence/');
+                                    reject();
+                                    app.dialog.alert("Continuing progress, " + userName, "Continuing");
+                                    router.navigate('/game1_evidence/');
+                                    return;
                                 }
                             );
 
@@ -56,6 +58,11 @@ var app = new Framework7({
             },
             on: {
                 pageInit: function (e, page) {
+                    $('#submit-candy').on("click", function () {
+                        console.log("click");
+                        inputWarn();
+                        setTimeout(5000);
+                    });
                     resetGame();
                     quickGame();
                     inputs();
@@ -99,6 +106,17 @@ var app = new Framework7({
                     });
                 },
             },
+        },
+        {
+            path: '/game1_map/',
+            url: 'pages/game1_map.html',
+        },
+        {
+            path: '/1/',
+            url: 'pages/rooms/backyard',
+            on: {
+
+            }
         },
         {
             path: '(.*)',
@@ -146,6 +164,15 @@ function checkLabels() {
         $(p1).text(people[i]);
         $(c1).text(candy[i]);
 
+        if(candy[i] != currentGameAns.candy) {
+            let c2 = ".randomCandy" + i;
+            $(c2).text(candy[i]);
+        }
+        if (people[i] != currentGameAns.person) {
+            let p2 = ".randomPerson" + i;
+            $(p2).text(people[i]);
+        }
+
         //console.log($(p).text(people[i]));
     }
     for (let i = 0; i < 10; i++) {
@@ -187,9 +214,12 @@ function vote() {
     // check location guess
     if(currentGuess.location == currentGameAns.location && currentGuess.candy == currentGameAns.candy && currentGuess.person == currentGameAns.person) {
         console.log("WOW");
+        won();
         resetGame();
+        returnMainMenu();
+
     }
-    console.log("Here1");
+    console.log("Finished Guess");
 }
 
 function inputs() {
@@ -228,6 +258,27 @@ function resetGame() {
     guessesLeft = 5;
     evidenceLeft = 7;
     infoFound = "";
+}
+
+function won() {
+    var toast = app.toast.create({
+        icon: "<img src='img/logo3.png'>",
+        text: 'Congrats, you solved the murder!',
+        position: 'center',
+        closeTimeout: 5000,
+        closeButton: true,
+    });
+    toast.open();
+}
+
+function returnMainMenu() {
+    app.dialog.alert(
+        "Return to main menu.",
+        "Congrats!",
+        function() {
+            window.location.replace('/SusPlaceHolderA1/www/');
+        }
+    )
 }
 
 
@@ -276,21 +327,18 @@ function quickGame() {
     currentGameAns.location = rooms[ans2];
     currentGameAns.candy = candy[ans3];
     console.log(currentGameAns);
-    gameStarted = true;
 }
 
+function inputWarn() {
+    app.dialog.alert(
+        "You will not be able to change your name/candy again! Proceed?",
+        "Warning",
+    );
+    setTimeout(5000);
+    gameStarted = true;
+    console.log("GAME STARTED");
+}
 
-
-
-// $('#vote').on("click", function () {
-//     console.log("Here2");
-// });
-
-// $("#name-input").on("change", function () {
-//     console.log("name inputted");
-//     var userName = $(this).val();
-//     $(".name-display").text(userName);
-// });
 
 
 
@@ -310,44 +358,3 @@ function quickGame() {
 //         console.log("Maybe you were the killer :scream: !");
 //     }
 // });
-
-
-// $('#submit-candy').on("click", function () {
-//     console.log("HI");
-//     console.log(userName);
-//     console.log(favCandy);
-
-//     if(userName == "J" || favCandy == "smarties") {
-//         app.dialog.confirm("You did not enter a name/candy! Proceed?", function (dialogLogIn) {
-//             app.dialog.alert("Sounds good, " + userName);
-//         });
-//     }
-// });
-
-// var dialogLogIn = app.dialog.create({
-//     text: "You did not enter a name/candy! Proceed?",
-//     title: "Warning!",
-//     on: {
-//         opened: function () {
-//             console.log('Dialog opened')
-//         }
-//     }
-//  });
-
-// app.dialog.confirm("You did not enter a name/candy! Proceed?", function (dialogLogIn) {
-//     app.dialog.alert("Sounds good, " + userName);
-//  });
-
-
-// app.picker.create({
-//     inputEl: '#people-picker',
-//     cols: [
-//         {
-//             textAlign: 'center',
-//             values: people,
-//         }
-//     ]
-// });
-
-
-
