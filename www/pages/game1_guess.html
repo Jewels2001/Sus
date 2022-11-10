@@ -18,15 +18,16 @@
     <div class="page-content">
         <div class="block">
             <h1> Guess Whodunnit? </h1>
+            <div class="container">You have </div><div id="numGuesses" class="container">1 million</div><div class="container"> guesses left!</div> 
             <div class="list">
-                <ul>
-                    <li>
+                <ul >
+                    <!-- <li>
                         <h2>Person</h2>
-                    </li>
+                    </li> -->
                     <li>
-                        <a class="item link smart-select smart-select-init" data-open-in="sheet"></a>
-                        <select id="person-guess" name="Person">
-                            <optgroup label="Person">
+                        <a class="item link smart-select smart-select-init" data-open-in="popover">
+                        <select id="person-guess">
+                            <optgroup>
                                 <option class="person1"> J </option>
                                 <option class="person2" value="person2"> J </option>
                                 <option class="person3"> May </option>
@@ -35,14 +36,20 @@
                                 <option class="person0"> Jack </option>
                             </optgroup>
                         </select>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">Person</div>
+                            </div>
+                        </div>
+                    </a>
                     </li>
                     <li>
                         <h1>Location</h1>
                     </li>
                     <li>
-                        <a class="item link smart-select smart-select-init" data-open-in="sheet"></a>
+                        <a class="item link smart-select smart-select-init" data-open-in="popover">
                         <select id="location-guess" name="Location">
-                            <optgroup label="Location">
+                            <optgroup >
                                 <option class="loc0"> John </option>
                                 <option class="loc2"> Amy </option>
                                 <option class="loc3"> May </option>
@@ -56,14 +63,20 @@
                                 <option class="loc9"> Ryan </option>
                             </optgroup>
                         </select>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">Location</div>
+                            </div>
+                        </div>
+                    </a>
                     </li>
                     <li>
                         <h1>Poisoned Candy</h1>
                     </li>
                     <li>
-                        <a class="item link smart-select smart-select-init" data-open-in="sheet"></a>
+                        <a class="item link smart-select smart-select-init" data-open-in="popover">
                         <select id="candy-guess" name="Candy">
-                            <optgroup label="Candy">
+                            <optgroup>
                                 <option class="candy0"> J </option>
                                 <option class="candy1" value="person2"> J </option>
                                 <option class="candy2"> May </option>
@@ -72,12 +85,18 @@
                                 <option class="candy5"> Jack </option>
                             </optgroup>
                         </select>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">Candy</div>
+                            </div>
+                        </div>
+                    </a>
                     </li>
                 </ul>
             </div>
             <div class="row">
                 <div class="col-100 medium-50 elevation-12 elevation-pressed-6">
-                    <a href="#" class="button button-raised button-fill" id="vote">Guess!</a>
+                    <div id="vote" class="button button-raised button-fill">Guess!</div>
                 </div>
             </div>
         </div>

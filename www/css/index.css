@@ -10,6 +10,8 @@
     /* --f7-list-item-divider-font-size: inherit;
     --f7-list-item-divider-bg-color: rgba(0, 0, 0, 0.03);
     --f7-list-item-divider-border-color: rgba(0, 0, 0, 0.22); */
+    /* --f7-popover-bg-color: #A0F069;
+    --f7-sheet-bg-color: #A0F069; */
 }
 
 body {
@@ -42,6 +44,7 @@ body {
 .container {
     display: inline;
     font-size: 24px;
+    overflow-wrap: break-word;
 }
 
 .container2 {
@@ -52,3 +55,4 @@ body {
 a {
     font-size: 18px;
 }
+
